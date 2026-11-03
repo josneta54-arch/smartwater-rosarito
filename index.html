@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Smart Water | Agua purificada 24/7</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EAF5FB;--surface:#fff;--ink:#0B2F4A;--muted:#47697F;--water:#1E88C9;--cap:#0F5FA8;--sun:#FFC83D;--line:#C9E1EF;color-scheme:light}
+@media(prefers-color-scheme:dark){:root{--bg:#071C2D;--surface:#0E2C45;--ink:#E6F3FB;--muted:#9DBBD0;--water:#4DB0EA;--cap:#2F7FC4;--line:#1D4768;color-scheme:dark}}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:16px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.55;font-size:clamp(16px,1.1vw + 12px,19px);padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+a{color:var(--cap)}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+header{padding:16px 0}
+header .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{font-weight:800;font-size:1.25rem;letter-spacing:-.01em;display:flex;align-items:center;gap:8px}
+.btn{display:inline-block;text-align:center;font:inherit;font-weight:800;text-decoration:none;border-radius:16px;padding:14px 22px;cursor:pointer;border:2px solid var(--ink);transition:transform .15s,filter .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.btn.main{background:var(--cap);border-color:var(--cap);color:#fff}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.small{padding:8px 16px;border-radius:99px;font-size:.92rem}
+.hero{position:relative;overflow:hidden;padding:clamp(16px,4vw,48px) 0 clamp(70px,9vw,120px)}
+.hero .wrap{display:grid;gap:clamp(24px,4vw,56px);align-items:center;position:relative;z-index:1}
+@media(min-width:900px){.hero .wrap{grid-template-columns:1.15fr .85fr}}
+h1{font-size:clamp(2.5rem,7.5vw,5.4rem);line-height:.96;letter-spacing:-.04em;font-weight:800;margin:0 0 18px}
+.lead{color:var(--muted);font-size:1.18em;max-width:36ch;margin:0 0 24px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.order{background:var(--surface);border:2px solid var(--ink);border-radius:28px;padding:clamp(18px,3vw,30px);box-shadow:8px 8px 0 var(--water);width:100%;max-width:520px;justify-self:center}
+.order h2{margin:0 0 14px;font-size:1.3rem}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.seg label{border:2px solid var(--line);border-radius:14px;padding:10px;text-align:center;cursor:pointer;font-weight:600;transition:background .2s}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label:has(input:checked){border-color:var(--ink);background:var(--sun);color:#0B2F4A}
+.seg label:has(input:focus-visible){outline:3px solid var(--water);outline-offset:2px}
+.calc{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.jug{width:92px;height:132px;flex:none;color:var(--ink)}
+.jug .lvl{transform-origin:bottom;transform-box:fill-box}
+.fill .lvl{animation:fill 1s ease-out}
+@keyframes fill{from{transform:translateY(70%)}to{transform:translateY(0)}}
+.stepper{display:flex;align-items:center;gap:10px}
+.stepper button{width:52px;height:52px;border-radius:50%;border:2px solid var(--ink);background:var(--surface);color:var(--ink);font:inherit;font-size:1.7rem;font-weight:600;cursor:pointer;line-height:1;transition:background .15s}
+.stepper button:hover,.stepper button:active{background:var(--sun);color:#0B2F4A}
+.qty{font-size:2.8rem;font-weight:800;min-width:2ch;text-align:center;font-variant-numeric:tabular-nums}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:2px dashed var(--line);padding-top:14px;font-weight:600}
+.total strong{font-size:2rem;font-weight:800}
+.note{font-size:.88em;color:var(--muted);margin:10px 0 0}
+.waves{position:absolute;left:0;right:0;bottom:-1px;height:clamp(50px,8vw,100px);z-index:0;color:var(--water);opacity:.28}
+.waves svg{position:absolute;bottom:0;left:0;width:200%;height:100%}
+.w2{opacity:.7}
+section.info{padding:clamp(36px,6vw,72px) 0;border-top:2px solid var(--line)}
+section.info h2{font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.02em;margin:0 0 20px}
+h3{margin:0 0 8px;font-size:1.2rem}
+.grid{display:grid;gap:clamp(22px,3vw,40px)}
+@media(min-width:620px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:980px){.grid{grid-template-columns:repeat(3,1fr)}}
+.grid p{margin:0 0 8px;color:var(--muted)}
+table{border-collapse:collapse;width:100%}
+td{padding:8px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-weight:800;color:var(--ink)}
+.gallery{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:22px;border:2px solid var(--ink)}
+.two{display:grid;gap:clamp(24px,4vw,56px);align-items:start}
+@media(min-width:860px){.two{grid-template-columns:1fr 1fr}}
+details{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:14px 18px;margin-bottom:10px}
+summary{font-weight:600;cursor:pointer}
+details[open]{border-color:var(--ink)}
+details p{margin:10px 0 0;color:var(--muted)}
+.fault{background:var(--surface);border:2px solid var(--ink);border-radius:28px;padding:clamp(18px,3vw,28px)}
+.fault h2{margin:0 0 6px!important}
+.fault p{color:var(--muted);margin:0 0 14px}
+select,textarea{width:100%;font:inherit;padding:12px 14px;border-radius:14px;border:2px solid var(--line);background:var(--bg);color:var(--ink);margin-bottom:12px}
+textarea{resize:vertical;min-height:80px}
+.fault .btn{display:block;width:100%}
+.sr{position:absolute;left:-9999px}
+footer{padding:28px 0 40px;color:var(--muted);font-size:.9em;border-top:2px solid var(--line)}
+@media(prefers-reduced-motion:no-preference){
+  .w1 svg{animation:drift 14s linear infinite}
+  .w2 svg{animation:drift 9s linear infinite reverse}
+  .bub{animation:rise 7s ease-in infinite}
+  .bub:nth-child(2){animation-delay:2.3s}.bub:nth-child(3){animation-delay:4.6s}
+  .hero h1,.hero .lead,.hero .cta{animation:up .7s ease-out both}
+  .hero .lead{animation-delay:.1s}.hero .cta{animation-delay:.2s}
+  .order{animation:up .8s .25s ease-out both}
+}
+@media(prefers-reduced-motion:reduce){.fill .lvl{animation:none}}
+@keyframes drift{to{transform:translateX(-50%)}}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes rise{0%{transform:translateY(0);opacity:0}15%{opacity:.5}100%{transform:translateY(-110px);opacity:0}}
+.bubs{position:absolute;inset:0;pointer-events:none;z-index:0}
+.bub{position:absolute;bottom:10%;width:14px;height:14px;border-radius:50%;border:2px solid var(--water);opacity:0}
+.bub:nth-child(1){left:8%}.bub:nth-child(2){left:46%;width:10px;height:10px}.bub:nth-child(3){left:90%;width:18px;height:18px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="brand"><svg width="22" height="28" viewBox="0 0 44 64" aria-hidden="true"><rect x="14" y="2" width="16" height="8" rx="2" fill="#0F5FA8"/><path d="M12 12h20l7 10v36a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V22z" fill="#1E88C9"/></svg><span>Smart Water</span></div>
+  <a class="btn ghost small" href="#reportar">Reportar falla</a>
+</div></header>
+
+<main>
+<div class="hero">
+  <div class="bubs" aria-hidden="true"><i class="bub"></i><i class="bub"></i><i class="bub"></i></div>
+  <div class="wrap">
+    <div>
+      <h1>Llena tu garrafón a cualquier hora.</h1>
+      <p class="lead">Agua purificada las 24 horas, todos los días. Llegas, llenas y te vas. No hacemos entregas.</p>
+      <div class="cta">
+        <a class="btn main" id="mapBtn" href="#" target="_blank" rel="noopener">Cómo llegar</a>
+        <a class="btn ghost" href="#preguntas">Preguntas frecuentes</a>
+      </div>
+    </div>
+    <div class="order fill" id="card">
+      <h2>¿Cuánto cuesta llenar?</h2>
+      <div class="seg" role="radiogroup" aria-label="Tamaño">
+        <label><input type="radio" name="size" value="20" checked><span>Garrafón 20 L</span></label>
+        <label><input type="radio" name="size" value="5"><span>Galón</span></label>
+      </div>
+      <div class="calc">
+        <svg class="jug" viewBox="0 0 44 64" aria-hidden="true">
+          <defs><clipPath id="c"><path d="M12 12h20l7 10v36a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V22z"/></clipPath></defs>
+          <rect x="14" y="2" width="16" height="8" rx="2" fill="#0F5FA8"/>
+          <g clip-path="url(#c)"><rect class="lvl" x="0" y="18" width="44" height="50" fill="#1E88C9"/></g>
+          <path d="M12 12h20l7 10v36a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V22z" fill="none" stroke="currentColor" stroke-width="2.5"/>
+        </svg>
+        <div class="stepper" role="group" aria-label="Cantidad">
+          <button type="button" id="minus" aria-label="Quitar uno">−</button>
+          <div class="qty" id="qty" aria-live="polite">1</div>
+          <button type="button" id="plus" aria-label="Agregar uno">+</button>
+        </div>
+      </div>
+      <div class="total"><span id="breakdown"></span><strong id="total"></strong></div>
+      <p class="note">Solo acepta monedas, no billetes. Trae tu envase y su tapa.</p>
+    </div>
+  </div>
+  <div class="waves" aria-hidden="true">
+    <div class="w1"><svg viewBox="0 0 1200 100" preserveAspectRatio="none"><path fill="currentColor" d="M0 50q75-40 150 0t150 0 150 0 150 0 150 0 150 0 150 0 150 0V100H0z"/></svg></div>
+    <div class="w2"><svg viewBox="0 0 1200 100" preserveAspectRatio="none"><path fill="currentColor" d="M0 60q100-45 200 0t200 0 200 0 200 0 200 0 200 0V100H0z"/></svg></div>
+  </div>
+</div>
+
+<section class="info" id="fotos" hidden><div class="wrap">
+  <h2>Así se ve</h2>
+  <div class="gallery">
+    <img src="maquina.jpg" alt="Máquina de agua purificada Smart Water" loading="lazy">
+    <img src="maquina2.jpg" alt="Zona de lavado y llenado de garrafones" loading="lazy">
+    <img src="maquina3.jpg" alt="Smart Water, agua purificada 24/7" loading="lazy">
+  </div>
+</div></section>
+
+<section class="info" id="ubicacion"><div class="wrap grid">
+  <div>
+    <h3>Precios</h3>
+    <table>
+      <tr><td>Garrafón 20 L</td><td id="p20"></td></tr>
+      <tr><td>Galón</td><td id="p5"></td></tr>
+      <tr><td>Lavado de garrafón</td><td>Gratis</td></tr>
+    </table>
+  </div>
+  <div>
+    <h3>Cómo funciona</h3>
+    <p>Lava tu garrafón gratis en el lugar, colócalo, paga con monedas y retíralo lleno. La máquina no acepta billetes. Abierto 24 horas, los 7 días. No hacemos entregas.</p>
+  </div>
+  <div>
+    <h3>Ubicación</h3>
+    <p id="address"></p>
+    <p><a href="#" id="mapLink" target="_blank" rel="noopener">Abrir en Google Maps</a></p>
+    <p><a id="t1" href="#"></a><br><a id="t2" href="#"></a></p>
+  </div>
+</div></section>
+
+<section class="info"><div class="wrap two">
+  <div id="preguntas">
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿A qué hora está abierto?</summary><p>Las 24 horas, todos los días del año.</p></details>
+    <details><summary>¿Cuánto cuesta llenar?</summary><p>El garrafón de 20 litros cuesta $17 y el galón $5.</p></details>
+    <details><summary>¿Aceptan billetes?</summary><p>No. La máquina solo acepta monedas, así que ten cambio a la mano.</p></details>
+    <details><summary>¿Puedo lavar mi garrafón ahí?</summary><p>Sí, puedes lavarlo en el lugar antes de llenarlo. El lavado es gratis.</p></details>
+    <details><summary>¿Venden tapas?</summary><p>No. Trae tu garrafón con su tapa.</p></details>
+    <details><summary>¿Hacen entregas a domicilio?</summary><p>No. Solo operamos la máquina, tú pasas a llenar tu envase.</p></details>
+    <details><summary>Me cobró y no sirvió agua, ¿qué hago?</summary><p>Usa el formulario de reportar una falla o llámanos a los teléfonos de esta página y lo resolvemos.</p></details>
+  </div>
+  <form class="fault" id="reportar">
+    <h2>Reportar una falla</h2>
+    <p>Cuéntanos qué pasó y te atendemos lo antes posible.</p>
+    <label for="issue" class="sr">Tipo de falla</label>
+    <select id="issue">
+      <option>La máquina no despacha agua</option>
+      <option>Me cobró y no sirvió</option>
+      <option>No acepta mis monedas</option>
+      <option>La pantalla no enciende</option>
+      <option>El agua sale con mal sabor u olor</option>
+      <option>Otro problema</option>
+    </select>
+    <label for="note" class="sr">Detalles</label>
+    <textarea id="note" placeholder="Detalles (opcional)"></textarea>
+    <a class="btn main" id="faultBtn" href="#" target="_blank" rel="noopener">Enviar reporte por WhatsApp</a>
+  </form>
+</div></section>
+</main>
+
+<footer><div class="wrap">© <span id="yr"></span> Smart Water. Agua purificada 24/7 en Playas de Rosarito.</div></footer>
+
+<script>
+// ===== EDITA SOLO ESTA SECCIÓN =====
+const CONFIG = {
+  tel1: "6643539974",
+  tel2: "6643409199",
+  precio20: 17,
+  precio5: 5,
+  direccion: "Av. Gabriel Leyva Solano esquina con C. José María Morelos, Playas de Rosarito, B.C.",
+  mapa: "https://maps.app.goo.gl/fapW63QtKDuiSqZWA?g_st=ic"
+};
+// ====================================
+const $ = id => document.getElementById(id);
+let qty = 1;
+const money = n => "$" + n.toLocaleString("es-MX") + " MXN";
+const fmt = t => t.slice(0,3) + " " + t.slice(3,6) + " " + t.slice(6);
+const size = () => document.querySelector("input[name=size]:checked").value;
+function render(){
+  const is20 = size() === "20";
+  const unit = is20 ? CONFIG.precio20 : CONFIG.precio5;
+  const n = is20 ? (qty === 1 ? "garrafón" : "garrafones") : (qty === 1 ? "galón" : "galones");
+  $("qty").textContent = qty;
+  $("breakdown").textContent = qty + " " + n;
+  $("total").textContent = money(qty * unit);
+}
+function bump(){ const c = $("card"); c.classList.remove("fill"); void c.offsetWidth; c.classList.add("fill"); }
+function updateFault(){
+  const n = $("note").value.trim();
+  const msg = "Reporte de falla en máquina Smart Water: " + $("issue").value + "." + (n ? " Detalles: " + n : "");
+  $("faultBtn").href = "https://wa.me/52" + CONFIG.tel1 + "?text=" + encodeURIComponent(msg);
+}
+$("plus").onclick = () => { qty = Math.min(qty + 1, 30); render(); bump(); };
+$("minus").onclick = () => { qty = Math.max(qty - 1, 1); render(); bump(); };
+document.querySelectorAll("input[name=size]").forEach(r => r.addEventListener("change", () => { render(); bump(); }));
+$("issue").addEventListener("change", updateFault);
+$("note").addEventListener("input", updateFault);
+$("reportar").addEventListener("submit", e => e.preventDefault());
+$("mapBtn").href = CONFIG.mapa; $("mapLink").href = CONFIG.mapa;
+$("address").textContent = CONFIG.direccion;
+$("p20").textContent = money(CONFIG.precio20); $("p5").textContent = money(CONFIG.precio5);
+$("t1").href = "tel:+52" + CONFIG.tel1; $("t1").textContent = fmt(CONFIG.tel1);
+$("t2").href = "tel:+52" + CONFIG.tel2; $("t2").textContent = fmt(CONFIG.tel2);
+$("yr").textContent = new Date().getFullYear();
+// Galería: solo se muestra si subes fotos maquina.jpg, maquina2.jpg, maquina3.jpg
+const imgs = document.querySelectorAll(".gallery img");
+let ok = 0;
+imgs.forEach(i => {
+  i.addEventListener("load", () => { ok++; $("fotos").hidden = false; });
+  i.addEventListener("error", () => i.remove());
+});
+render(); updateFault();
+</script>
+</body>
+</html>
